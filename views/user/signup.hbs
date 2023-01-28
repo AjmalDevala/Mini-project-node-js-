@@ -1,0 +1,190 @@
+<section class="vh-100 bg-image"
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form method="post" action="/signup" id="myForm">
+
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                  <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                  <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                  <input type="password" id="form3Example4cg" name="password" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                  <input type="password" id="form3Example4cdg" name="cPassword" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                  <div>
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  </div>
+
+                  <label class="form-check-label " for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body "><u>Terms of
+                        service</u></a>
+                  </label>
+                </div>
+                {{#if userAlreadyExist }}
+                <p style="color:red ;">User Already Exist !</p>
+                {{/if}}
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-warning btn-block btn-lg gradient-custom-4 text-body"
+                    type="button" onclick="login()">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{{!--
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js">
+  $(document).ready(function () {
+    $("#basicform").validate({
+      rules: {
+        password: {
+          required: true,
+          minlength: 3
+        },
+        re- password: {
+      required: true,
+      minlength: 3,
+      equalTo: "#password"
+    }
+    }
+  });
+
+
+});
+</script> --}}
+
+{{!--
+<script>
+  const login = () => {
+
+    let name = document.getElementById("name").value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const Repassword = document.getElementById('repassword').value;
+    let check;
+
+    if (!name) {
+      document.getElementById('checkName').innerText = "Enter Your Name";
+      check = false;
+    } else {
+      document.getElementById('checkName').innerText = "";
+      check = true;
+    }
+    if (!email) {
+      document.getElementById('checkEmail').innerText = "Enter Your Email";
+      check = false;
+    } else {
+      document.getElementById('checkEmail').innerText = "";
+      check = true;
+    }
+    if (!password) {
+      document.getElementById('checkPassword').innerText = "Enter A Password";
+      check = false;
+    } else {
+      document.getElementById('checkPassword').innerText = "";
+      check = true;
+    }
+    if (!Repassword) {
+      document.getElementById('checkRepassword').innerText = "Enter Your Name";
+      check = false;
+    } else {
+      if (Repassword === password) {
+
+        document.getElementById('checkRepassword').innerText = "";
+        check = true;
+      } else {
+        document.getElementById('checkRepassword').innerText = "Enter passWord same as above";
+        check = false;
+
+      }
+    }
+    if (check) {
+      document.getElementById('myForm').submit();
+    }
+
+  }
+</script> --}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script>
+  jQuery.validator.addMethod("lettersonly", function (value, element) {
+    return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Letters only please");
+
+  $().ready(function () {
+
+    $("#myForm").validate({
+      // in 'rules' user have to specify all the constraints for respective fields
+      rules: {
+        name: {
+          required: true,
+          lettersonly: true
+        },
+        email: {
+          required: true,
+          email: true //for length of lastname
+        },
+        password: {
+          required: true,
+          minlength: 5,
+          maxlength: 10
+        },
+        cPassword: {
+          required: true,
+          minlength: 5,
+          equalTo: "#form3Example4cdg" //for checking both passwords are same or not
+        },
+      },
+      // in 'messages' user have to specify message as per rules
+      messages: {
+        name: {
+          required: "Please Enter a Name",
+          lettersonly: "Please enter a valid Name"
+        },
+        password: {
+          required: " Please Enter a Password",
+          minlength: " Your password must be consist of at least 5 characters"
+        },
+        confirm_password: {
+          required: " Please Enter a Password",
+          minlength: " Your password must be consist of at least 5 characters",
+          equalTo: " Please enter the same password as above"
+        },
+        agree: "Please accept our policy"
+      }
+    });
+  });
+
+</script>

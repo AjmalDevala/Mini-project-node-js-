@@ -1,0 +1,38 @@
+<section>
+   
+  <div class="container">
+    {{!-- <div class="row d-flex justify-content-end">
+      <button class="btn btn-outline-danger my-2 my-sm-0 mx-3" type="submit"href="/add-user">Add User</button>
+    </div> --}}
+    <table  class="table " id="idtable">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Update/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+          <th scope="row">#</th>
+          <td>{{this.name}}</td>
+          <td>{{this.email}}</td>
+          <td><a  class="btn btn-success" href="/admin/update-user/{{this._id}}">Edit</a>
+            <a class="btn btn-danger" href="/admin/delete-user/{{this._id}}" onclick="return confirm('Are you sure you want to delte {{this.name}} ?')">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<script>
+
+$(document).ready( function () {
+    $('#idtable').DataTable();
+} );
+</script>

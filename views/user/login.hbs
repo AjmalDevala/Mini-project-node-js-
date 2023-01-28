@@ -1,0 +1,69 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-4 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSUCVzhmu0RO4CltAeZDHoN-Y3vlmvW_oPow&usqp=CAU"
+                                        style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">The VOGUE Team</h4>
+                                </div>
+
+                                <form action="/login" method="post">
+                                    <p>Please login to your account</p>
+
+                                    <div class="form-group mb-3">
+                                        <input id="inputEmail" type="email" placeholder="Email address" required=""
+                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"
+                                            name="email">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <input id="inputPassword" type="password" placeholder="Password" required=""
+                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                                            name="password">
+                                    </div>
+                                    {{#if session.usernotfound}}
+                                    <p class="text-danger">Invalid Username</p>
+                                    {{/if}}
+                                    {{#if session.wrongpassword}}
+                                    <p class="text-danger">Invalid password</p>
+                                    {{/if}}
+                                    <div class="text-center d-grid gap-2 pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" type=" submit">Log
+                                            in</button>
+                                        <a class="text-muted" style="text-decoration: none;" href="#!">Forgot
+                                            password?</a>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <p class="mb-0 me-2">Don't have an account?</p>
+                                        <a href="/signup"><button type="button" class="btn btn-outline-danger">Create new</button></a>
+                                        <a href="../admin/admin-login"><button type="button" class="btn btn-outline-danger">Admin Login</button></a>
+
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                {{!-- <img
+                                    src="https://voguesg.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/08/20122625/The-RenaiXance-Rising-First-Light-NFT-1.jpg"
+                                    --}} <img
+                                    src="https://assets.vogue.in/photos/5ce4525ccc50bea464142669/2:3/w_2560%2Cc_limit/146.jpg"
+                                    style="width: 500px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
